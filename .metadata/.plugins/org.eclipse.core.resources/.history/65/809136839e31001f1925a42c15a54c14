@@ -23,19 +23,12 @@ public class Program {
 					"WHERE "+
 					"(DepartmentId = ?)");
 			
-			st.setDouble(1, 200.0);
-			st.setInt(2, 2);
-			
 			int linhasAlteradas = st.executeUpdate();
 			
 			System.out.println("Pronto - Linhas alteradas: " + linhasAlteradas);
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
-		}
-		finally {
-			DB.closeStatement(st);
-			DB.closeConnection();
 		}
 		
 		
