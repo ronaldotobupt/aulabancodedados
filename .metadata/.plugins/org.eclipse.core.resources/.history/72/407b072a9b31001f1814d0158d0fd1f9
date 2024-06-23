@@ -1,0 +1,31 @@
+package application;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.text.SimpleDateFormat;
+
+import com.mysql.cj.xdevapi.PreparableStatement;
+
+import db.DB;
+
+public class Program {
+
+	public static void main(String[] args) {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Connection conn = null;
+		PreparedStatement st = null;
+		
+		try{
+			
+			conn = DB.getConnection();
+			
+			st = conn.prepareStatement(
+					"INSERT INTO seller "+
+					"(Name, Email, BirthDate, BaseSalary, DepartmentId) "+
+					"VALUES "+
+					"(?, ?, ?, ?, ?)");
+		}
+		
+	}
+}
