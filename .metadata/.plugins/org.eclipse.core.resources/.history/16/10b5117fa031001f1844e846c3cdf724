@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import db.DB;
-import db.DbExcecaoIntegridade;
 
 public class Program {
 
@@ -19,18 +18,20 @@ public class Program {
 			conn = DB.getConnection();
 			
 			st = conn.prepareStatement(
-					"DELETE FROM department "+
+					"DELETE department "+
+					"SET Id = ? "+
 					"WHERE "+
-					"(Id = ?)");
+					"(DepartmentId = ?)");
 			
-			st.setInt(1, 2);
+			st.setDouble(1, 200.0);
+			st.setInt(2, 2);
 			
 			int linhasAlteradas = st.executeUpdate();
 			
 			System.out.println("Pronto - Linhas alteradas: " + linhasAlteradas);
 		}
 		catch(SQLException e) {
-			throw new DbExcecaoIntegridade(e.getMessage());
+			e.printStackTrace();
 		}
 		finally {
 			DB.closeStatement(st);

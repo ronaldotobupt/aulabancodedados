@@ -23,7 +23,7 @@ public class Program {
 					"WHERE "+
 					"(Id = ?)");
 			
-			st.setInt(1, 2);
+			st.setInt(1, 6);
 			
 			int linhasAlteradas = st.executeUpdate();
 			
